@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+.container {
+    width: min(900px, 92%);
+    margin: 40px auto;
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+input, button {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background: #222;
+    color: white;
+}
+
+button.secondary {
+    background: #777;
+}
+
+.student {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.actions button {
+    width: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+#message {
+    text-align: center;
+    font-weight: bold;
+}
