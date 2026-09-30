@@ -81,3 +81,71 @@ http://localhost:8080
 ## GitHub
 
 This repository contains source code. GitHub Pages cannot run the Spring Boot/JDBC/MySQL backend. For a live full-stack deployment, deploy the backend and database on a server/cloud platform separately.
+
+
+## Backend + MySQL connection
+
+The backend is already connected to MySQL through JDBC.
+
+Flow:
+
+Frontend (HTML/CSS/JS)
+→ Spring Boot REST Controller
+→ Service
+→ StudentDAO
+→ JDBC
+→ MySQL `college` database
+→ `students` table
+
+### 1. Create the database
+
+Open MySQL Workbench or MySQL command line and run:
+
+```sql
+SOURCE database/schema.sql;
+```
+
+Or copy and run the contents of `database/schema.sql`.
+
+### 2. Configure MySQL login
+
+For local MySQL with the default `root` username and an empty password, the project works with the default settings.
+
+If your MySQL has a password, set:
+
+```text
+DB_URL=jdbc:mysql://localhost:3306/college
+DB_USERNAME=root
+DB_PASSWORD=YOUR_PASSWORD
+```
+
+Do not put a real password in a public GitHub repository.
+
+### 3. Start the backend
+
+From the `backend` folder:
+
+```bash
+mvn spring-boot:run
+```
+
+Open:
+
+```text
+http://localhost:8080
+```
+
+### 4. Test the database connection
+
+Open:
+
+```text
+http://localhost:8080/api/students/db-status
+```
+
+A successful connection returns:
+
+```text
+MySQL database connection is successful.
+```
+

@@ -28,6 +28,14 @@ public class StudentDAO {
         return DriverManager.getConnection(url, username, password);
     }
 
+    public boolean testConnection() {
+        try (Connection con = getConnection()) {
+            return con.isValid(3);
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
     public List<Student> findAll() throws SQLException {
         String sql = "SELECT id, name, email, age FROM students ORDER BY id";
         List<Student> students = new ArrayList<>();
