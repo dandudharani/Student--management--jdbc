@@ -149,3 +149,14 @@ A successful connection returns:
 MySQL database connection is successful.
 ```
 
+
+## Online deployment note
+
+For an online deployment, `localhost` refers to the cloud server, not your phone or laptop.
+Therefore, create a cloud MySQL database and set these environment variables on the backend host:
+
+`DB_URL`
+`DB_USERNAME`
+`DB_PASSWORD`
+
+The database must contain the `college` database and `students` table from `database/schema.sql`.

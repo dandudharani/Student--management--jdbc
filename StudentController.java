@@ -1,7 +1,7 @@
 package com.example.student.controller;
 
-import com.example.student.model.Student;
 import com.example.student.dao.StudentDAO;
+import com.example.student.model.Student;
 import com.example.student.service.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +14,11 @@ import java.util.List;
 @RequestMapping("/api/students")
 public class StudentController {
 
+    private final StudentService studentService;
     private final StudentDAO studentDAO;
 
-    public StudentController(StudentDAO studentDAO) {
+    public StudentController(StudentService studentService, StudentDAO studentDAO) {
+        this.studentService = studentService;
         this.studentDAO = studentDAO;
     }
 
@@ -25,14 +27,8 @@ public class StudentController {
         if (studentDAO.testConnection()) {
             return ResponseEntity.ok("MySQL database connection is successful.");
         }
-        return ResponseEntity.status(500).body("MySQL database connection failed. Check DB_URL, DB_USERNAME, DB_PASSWORD and MySQL.");
-    }
-
-
-    private final StudentService studentService;
-
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
+        return ResponseEntity.status(500)
+                .body("MySQL database connection failed. Check DB_URL, DB_USERNAME, DB_PASSWORD and MySQL.");
     }
 
     @GetMapping
